@@ -8,6 +8,7 @@ const zippedFile = require('./archiver')
 
 //Make POST
 async function makeAxios(){
+  
   await zippedFile()
 
   console.log("AXIOS!!!")
@@ -17,6 +18,9 @@ async function makeAxios(){
   ZipPath = path.join(__dirname, '../candidate-test-nodejs-2021/cool/diprawal.zip')
 
   console.log(ZipPath)
+
+try {
+
   axios({
     
     method: 'POST',
@@ -32,6 +36,11 @@ async function makeAxios(){
     maxBodyLength: Infinity,
     data: fs.createReadStream(ZipPath),
   });
+  
+} catch (error) {
+  console.log('Failed')
+}
+
 
 
 }
